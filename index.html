@@ -41,8 +41,7 @@
           <small>企業 × 諏訪東京理科大学</small>
         </span>
       </a>
-      <a class="cta-mini" data-form-link href="https://forms.gle/YOUR_FORM_ID_HERE" target="_blank"
-        rel="noopener">お問い合わせ</a>
+      <a class="cta-mini" href="#contact">お問い合わせ</a>
     </div>
   </div>
 
@@ -60,8 +59,7 @@
         <br>"バラバラ"な業務を、これだけで完結させます。
       </p>
       <div class="cta-row reveal">
-        <a class="btn btn-primary" data-form-link href="https://forms.gle/YOUR_FORM_ID_HERE" target="_blank"
-          rel="noopener">
+        <a class="btn btn-primary" href="#contact">
           お問い合わせはこちら
         </a>
         <a class="btn btn-ghost-w" href="#results">実績を見る ↓</a>
@@ -396,10 +394,49 @@
           業種・現場の状況をお聞かせいただければ、無料で「AI化の可能性診断」をお送りします。<br>
           まずは雑談ベースで構いません。現場の"困りごと"を教えてください。
         </p>
-        <a class="btn btn-primary btn-lg" data-form-link href="https://forms.gle/YOUR_FORM_ID_HERE" target="_blank"
-          rel="noopener">
-          お問い合わせフォームへ
-        </a>
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="companyName">会社名・組織名 <span class="required">必須</span></label>
+              <input type="text" id="companyName" name="companyName" required placeholder="例：株式会社○○">
+            </div>
+            <div class="form-group">
+              <label for="contactName">ご担当者名 <span class="required">必須</span></label>
+              <input type="text" id="contactName" name="contactName" required placeholder="例：山田 太郎">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">メールアドレス <span class="required">必須</span></label>
+              <input type="email" id="email" name="email" required placeholder="例：info@example.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">電話番号 <span class="optional">任意</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="例：03-1234-5678">
+            </div>
+          </div>
+          <div class="form-group" style="padding: 0 8px;">
+            <label for="industry">業種 <span class="optional">任意</span></label>
+            <select id="industry" name="industry" onchange="document.getElementById('industryOther').style.display = (this.value === 'その他') ? 'block' : 'none';">
+              <option value="">選択してください</option>
+              <option value="製造業">製造業</option>
+              <option value="建設業">建設業</option>
+              <option value="小売・流通">小売・流通</option>
+              <option value="医療・介護">医療・介護</option>
+              <option value="士業・事務所">士業・事務所</option>
+              <option value="農業・食品加工">農業・食品加工</option>
+              <option value="その他">その他</option>
+            </select>
+            <input type="text" id="industryOther" name="industryOther" placeholder="具体的な業種をご記入ください" style="display: none; margin-top: 12px;">
+          </div>
+          <div class="form-group" style="padding: 0 8px;">
+            <label for="message">現在のお困りごと・ご相談内容 <span class="required">必須</span></label>
+            <textarea id="message" name="message" rows="5" required placeholder="例：毎日手書きの工事日報をエクセルに打ち込むのに1時間かかっています。"></textarea>
+          </div>
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary btn-lg">診断を申し込む（無料）</button>
+          </div>
+        </form>
         <div class="email-line">
           <span>直接のメール連絡もどうぞ：</span>
           <a href="/cdn-cgi/l/email-protection#0672373433363e3346636228757375286765286c76"><span class="__cf_email__"
