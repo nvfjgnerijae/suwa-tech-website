@@ -97,11 +97,11 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // ↓↓↓ お客様側でデプロイしたGoogle Apps Scriptの「ウェブアプリのURL」をここに貼り付けてください ↓↓↓
-    const scriptURL = 'https://docs.google.com/spreadsheets/d/1C7zmDTn9814mX1dkpnYHqfYPMAEfg12m1tMY6jNjDkg/edit?gid=0#gid=0';
+    // ↓↓↓ GASの「デプロイ」で発行された https://script.google.com/macros/s/AKfycb.../exec のURLを貼ってください ↓↓↓
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby-jP98rSwTBkSFdsDd6fSz9LyhHAqdGytiv0YgypZaapNWrJf51e_FsTH0WlkYgIFcOA/exec';
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
-    if (scriptURL === 'YOUR_GAS_WEB_APP_URL_HERE' || scriptURL === '') {
+    if (scriptURL === 'YOUR_GAS_DEPLOY_URL_HERE' || scriptURL === '') {
       alert('エラー：GASの連携先URLが設定されていません。\nmain.jsを開き、発行したウェブアプリのURLを設定してください。');
       return;
     }
@@ -113,14 +113,13 @@
     submitBtn.disabled = true;
     submitBtn.textContent = '送信中...';
 
+    // FormDataをURLパラメータに変換し、GETで送信（GASのリダイレクト問題を回避）
     const formData = new FormData(form);
+    const params = new URLSearchParams(formData).toString();
+    const requestURL = scriptURL + '?' + params;
 
-    fetch(scriptURL, {
-      method: 'POST',
-      body: formData
-    })
-      .then(response => {
-        // 成功時
+    fetch(requestURL, { mode: 'no-cors' })
+      .then(() => {
         alert('お問い合わせを受け付けました。\n内容を確認のうえ、担当者よりご連絡いたします。');
         form.reset();
 
@@ -131,9 +130,8 @@
         submitBtn.textContent = originalBtnText;
       })
       .catch(error => {
-        // エラー時
         console.error('Error!', error.message);
-        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        alert('送信に失敗しました。ネットワーク接続を確認のうえ、再度お試しください。');
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
       });

@@ -415,7 +415,7 @@
               <input type="tel" id="phone" name="phone" placeholder="例：03-1234-5678">
             </div>
           </div>
-          <div class="form-group" style="padding: 0 8px;">
+          <div class="form-group">
             <label for="industry">業種 <span class="optional">任意</span></label>
             <select id="industry" name="industry" onchange="document.getElementById('industryOther').style.display = (this.value === 'その他') ? 'block' : 'none';">
               <option value="">選択してください</option>
@@ -429,7 +429,7 @@
             </select>
             <input type="text" id="industryOther" name="industryOther" placeholder="具体的な業種をご記入ください" style="display: none; margin-top: 12px;">
           </div>
-          <div class="form-group" style="padding: 0 8px;">
+          <div class="form-group">
             <label for="message">現在のお困りごと・ご相談内容 <span class="required">必須</span></label>
             <textarea id="message" name="message" rows="5" required placeholder="例：毎日手書きの工事日報をエクセルに打ち込むのに1時間かかっています。"></textarea>
           </div>
