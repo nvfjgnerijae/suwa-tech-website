@@ -226,23 +226,22 @@ h2.section-title{
   background: var(--white);
   border: 1px solid var(--hair);
   border-radius: var(--radius);
-  padding: 24px 22px 22px;
+  padding: 32px 28px 28px;
   position: relative;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .pain-card:hover{
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.06);
   border-color: var(--navy);
 }
 .pain-card .idx{
-  position: absolute; top: 18px; right: 20px;
-  font-size: 11px; color: var(--ink-2);
-  font-weight: 700; letter-spacing: 0.1em;
-}
-.pain-card .emoji{
-  font-size: 40px; line-height: 1;
-  margin-bottom: 16px;
-  filter: grayscale(0.15);
+  display: block;
+  font-size: 42px; color: var(--navy);
+  font-weight: 900; letter-spacing: 0.02em;
+  opacity: 0.08;
+  margin-bottom: 12px;
+  line-height: 1;
 }
 .pain-card h3{
   font-size: 17px; font-weight: 900;
@@ -290,11 +289,12 @@ h2.section-title{
   position: relative;
 }
 .step .step-no{
-  font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
-  color: var(--orange); margin-bottom: 8px;
-}
-.step .step-ico{
-  font-size: 36px; line-height: 1; margin: 8px 0 14px;
+  display: inline-block;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.15em;
+  color: var(--orange); margin-bottom: 20px;
+  padding: 6px 12px;
+  background: var(--orange-soft);
+  border-radius: 6px;
 }
 .step h3{
   font-size: 18px; font-weight: 900; color: var(--navy);
