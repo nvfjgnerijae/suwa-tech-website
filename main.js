@@ -88,3 +88,48 @@
 
   apply();
 })();
+
+// ---- Contact form -> Google Apps Script ----
+(function(){
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const btn = form.querySelector('button[type="submit"]');
+  const originalBtnText = btn ? btn.textContent : '';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const gasUrl = form.getAttribute('data-gas-url');
+    if (!gasUrl || gasUrl.indexOf('YOUR_DEPLOYMENT_ID') !== -1) {
+      alert('送信先のGoogle Apps Script URLが未設定です。管理者に連絡してください。');
+      return;
+    }
+
+    const data = {
+      timestamp: new Date().toISOString(),
+      companyName: form.companyName.value,
+      contactName: form.contactName.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      industry: form.industry.value === 'その他' ? (form.industryOther.value || 'その他') : form.industry.value,
+      message: form.message.value
+    };
+
+    if (btn) { btn.disabled = true; btn.textContent = '送信中...'; }
+    try {
+      await fetch(gasUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      });
+      alert('お申し込みありがとうございます。2〜3営業日以内にご返信いたします。');
+      form.reset();
+      const io = document.getElementById('industryOther');
+      if (io) io.style.display = 'none';
+    } catch (err) {
+      alert('送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = originalBtnText; }
+    }
+  });
+})();
