@@ -458,14 +458,14 @@ h2.section-title{
   font-size: 12px; color: var(--orange); font-weight: 700;
   letter-spacing: 0.1em;
 }
+.team-card .name + .role {
+  margin-top: 16px;
+}
 .team-card .members{
-  margin-top: 14px; font-size: 13px; color: var(--ink-2); line-height: 1.8;
+  font-size: 13px; color: var(--ink-2); line-height: 1.8;
 }
 .team-body .desc p{
   font-size: 15px; line-height: 2; color: var(--ink); margin: 0 0 14px;
-}
-.team-body .desc p:first-child::first-letter{
-  color: var(--orange); font-weight: 900;
 }
 
 /* ---------- Section 8: FAQ ---------- */
