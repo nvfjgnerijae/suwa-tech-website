@@ -42,8 +42,9 @@ function doPost(e) {
 
      MailApp.sendEmail({
        to: 'youmayitian@gmail.com',
+       cc: 'takabehibise@gmail.com, c6h6.benzene.steady@gmail.com', // ここにお二人のメールアドレスをカンマ区切りで入力してください
        subject: '【SUWA tech】新しいお問い合わせ',
-       body: `会社名: ${data.companyName}\n担当者: ${data.contactName}\nメール: ${data.email}\n電話: ${data.phone}\n業種: ${data.industry}\n\n${data.message}`
+       body: `会社名: ${data.companyName}\n担当者: ${data.contactName}\nメール: ${data.email}\n電話: ${data.phone}\n業種: ${data.industry}\n\n${data.message}\n\n---\nすべてのデータ保管場所: https://docs.google.com/spreadsheets/d/1e24WL7NGE19uV94yTGqY7F2ErjNJkuirB-9a1vGYv6E/edit?usp=sharing`
      });
 
     return ContentService
@@ -58,4 +59,12 @@ function doPost(e) {
 
 function doGet() {
   return ContentService.createTextOutput('OK');
+}
+
+function authorizeMail() {
+  MailApp.sendEmail({
+    to: 'youmayitian@gmail.com',
+    subject: '【認証用】テストメール',
+    body: 'これはMailApp認証のためのテスト送信です。'
+  });
 }
