@@ -321,7 +321,7 @@ h2.section-title{
   padding: 40px 0;
   border-bottom: 1px solid var(--grey-2);
 }
-.feature:last-child{ border-bottom: none; }
+.feature:last-of-type{ border-bottom: none; }
 .feature.reverse .feature-media{ order: 2; }
 @media (max-width: 860px){
   .feature, .feature.reverse{
