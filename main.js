@@ -32,7 +32,7 @@
     const h1 = document.getElementById('heroHeadline');
     if (h1 && state.headline) {
       h1.innerHTML = state.headline
-        .replace(/(スマホで撮るだけ)/, '<span class="mark">$1</span>')
+        .replace(/(システムを作りました。|システムを作りました)/, '<span class="mark">$1</span>')
         .replace(/、/g, '、<br>')
         .replace(/<br>(\s*)$/, '');
     }
